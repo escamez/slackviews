@@ -364,10 +364,14 @@ Just clear the supplied default blocks and make sure to serialize supplied examp
 
 `plaintext = PlainText.Builder().text('Simple text without formatting').build()`
 
+  _{'type': 'plain_text', 'text': 'Simple text without formatting', 'emoji': False}_
+
 then 
 
 `plaintext = PlainText.Builder().text('Simple text without formatting').build().serialize(as_json=True)`
 
+  _'{"type": "plain_text", "text": "Simple text without formatting", "emoji": false}'_
+  
 and copy the content between quotes (without the quotes) to *blocks* array. 
 Sometimes, not all combinations are available in SBKB, but can be tested sending a message to a known private channel.
 
@@ -375,23 +379,28 @@ Sometimes, not all combinations are available in SBKB, but can be tested sending
 
 ```
 plaintext = PlainText.Builder().text('Simple text without formatting').build()
-planintext_escaped = PlainText.Builder().text('Simple text with emojis escaped into colon emoji format') \
-    .emoji_(True).build().serialize()
+planintext_escaped = PlainText.Builder().text('Simple text with emojis escaped into colon emoji format :)') \
+    .emoji_(True).build().serialize(as_json=True)
 ```
+
+  _'{"type": "plain_text", "text": "Simple text without formatting", "emoji": false}'_
+  
+  _'{"type": "plain_text", "text": "Simple text with emojis escaped into colon emoji format :)", "emoji": true}'_
 
 **Section with markdown**
 ```
-section = Section.Builder().text__('Text with *markdown* _formatting_ and url processing http://anyurl.com') \
-    .build().serialize()
+section = Section.Builder().text__('Text with *markdown* _formatting_ and url processing http://anyurl.com').build().serialize(as_json=True)
 ```
+
+  _'{"type": "section", "text": {"type": "mrkdwn", "text": "Text with *markdown* _formatting_ and url processing http://anyurl.com", "verbatim": false}}'_
 
 **Section with markdown and verbatim mode**
 
 ```
-section_verbatim = Section.Builder().text__(
-    'Text in verbatim mode. For example urls are not processed: http://anyurl.com',
-    verbatim=True).build().serialize()
+section_verbatim = Section.Builder().text__('Text in verbatim mode. For example urls are not processed: http://anyurl.com', verbatim=True).build().serialize(as_json=True)
 ```
+
+  _'{"type": "section", "text": {"type": "mrkdwn", "text": "Text in verbatim mode. For example urls are not processed: http://anyurl.com", "verbatim": true}}'_
 
 **Section with 4 fields an a Button with confirmation**
 
@@ -401,30 +410,38 @@ for i in range(4):
     section_with_fields.field__(f'*Field_{i}*: value {i}')
 section_with_fields.accessory_().Button().text('Click').action_id('action_name').style_('danger') \
     .Confirm_().title('Confirmation').style_('danger').text('are you sure?').confirm('yes').deny('no').up().up() \
-    .build().serialize()
+    .build().serialize(as_json=True)
 ```
+
+  _'{"type": "section", "accessory": {"type": "button", "confirm": {"style": "danger", "deny": {"type": "plain_text", "text": "no", "emoji": false}, "confirm": {"type": "plain_text", "text": "yes", "emoji": false}, "text": {"type": "mrkdwn", "text": "are you sure?", "verbatim": false}, "title": {"type": "plain_text", "text": "Confirmation", "emoji": false}}, "style": "danger", "action_id": "action_name", "text": {"type": "plain_text", "text": "Click", "emoji": false}}, "fields": [{"type": "mrkdwn", "text": "*Field_0*: value 0", "verbatim": false}, {"type": "mrkdwn", "text": "*Field_1*: value 1", "verbatim": false}, {"type": "mrkdwn", "text": "*Field_2*: value 2", "verbatim": false}, {"type": "mrkdwn", "text": "*Field_3*: value 3", "verbatim": false}], "block_id": "any block id"}'_
 
 **Section with text an a button that opens an url**
 
 ```
 section_with_button = Section.Builder().text__('Click button to open google').accessory_() \
     .Button().action_id('any_action_name').text('Google').url_('http://www.google.com').up() \
-    .build().serialize()
+    .build().serialize(as_json=True)
 ```
+
+  _'{"type": "section", "accessory": {"type": "button", "url": "http://www.google.com", "action_id": "any_action_name", "text": {"type": "plain_text", "text": "Google", "emoji": false}}, "text": {"type": "mrkdwn", "text": "Click button to open google", "verbatim": false}}'_
 
 **Section with a multiline PlainInputText**
 
 ``` 
 Section.Builder().text__('Please, input necessary content').accessory_() \
     .PlainTextInput().action_id('any_action_id').multiline_(True).initial_value_('Initial content').up() \
-    .build().serialize()
+    .build().serialize(as_json=True)
 ```
+
+  _'{"type": "section", "accessory": {"type": "plain_text_input", "multiline": true, "initial_value": "Initial content", "action_id": "any_action_id"}, "text": {"type": "mrkdwn", "text": "Please, input necessary content", "verbatim": false}}'_
 
 **Context with mardown text**
 
 ```
-context_with_text = Context.Builder().element().Text().text('Any *formatted* text with smaller font').up().build()
+context_with_text = Context.Builder().element().Text().text('Any *formatted* text with smaller font').up().build().serialize(as_json=True)
 ```
+  
+  _'{"type": "context", "elements": [{"type": "mrkdwn", "text": "Any *formatted* text with smaller font", "verbatim": false}]}'_
 
 **Overflow with options. As can be seen, since the reference of the builder is returned it's much easier to build
 any content**
@@ -437,8 +454,10 @@ for i in range(4):
     _builder_overflow.Option().text(f'option {i}').value(f'{i}')
 _builder_overflow.Confirm_().text('Confirmation option').title('are you sure?').confirm('yes').deny('no') \
     .style_('primary')
-section_with_overflow = _builder_section.build()
+section_with_overflow = _builder_section.build().serialize(as_json=True)
 ```
+
+  _'{"type": "section", "accessory": {"type": "overflow", "confirm": {"style": "primary", "deny": {"type": "plain_text", "text": "no", "emoji": false}, "confirm": {"type": "plain_text", "text": "yes", "emoji": false}, "text": {"type": "mrkdwn", "text": "Confirmation option", "verbatim": false}, "title": {"type": "plain_text", "text": "are you sure?", "emoji": false}}, "options": [{"value": "0", "text": {"type": "plain_text", "text": "option 0", "emoji": false}}, {"value": "1", "text": {"type": "plain_text", "text": "option 1", "emoji": false}}, {"value": "2", "text": {"type": "plain_text", "text": "option 2", "emoji": false}}, {"value": "3", "text": {"type": "plain_text", "text": "option 3", "emoji": false}}], "action_id": "any_action_id"}, "text": {"type": "mrkdwn", "text": "Section with overflow and options", "verbatim": false}}'_
 
 **BlocksArray with a Header, divider, Section with fields, Input with plaintextinput multiline and actions 
 with a couple of buttons, one green (primary style) an another one red (danger style)**
@@ -452,5 +471,7 @@ blocks_array = BlocksArray.Builder() \
     .Divider().up() \
     .Actions().element().Button().action_id('action_1').text('action 1').style_('primary').up() \
               .element().Button().action_id('action_2').text('action 2').style_('danger').up() \
-    .up().build()
+    .up().build().serialize(as_json=True)
 ```
+
+  _'[{"type": "header", "text": {"type": "plain_text", "text": "Header title", "emoji": false}}, {"type": "divider"}, {"type": "section", "fields": [{"type": "mrkdwn", "text": "field 1", "verbatim": false}, {"type": "mrkdwn", "text": "field 2", "verbatim": false}, {"type": "mrkdwn", "text": "field 3", "verbatim": false}, {"type": "mrkdwn", "text": "field 4", "verbatim": false}]}, {"type": "input", "element": {"type": "plain_text_input", "multiline": true, "action_id": "input_action_id"}, "label": {"type": "plain_text", "text": "Input text", "emoji": false}}, {"type": "divider"}, {"type": "actions", "elements": [{"type": "button", "style": "primary", "action_id": "action_1", "text": {"type": "plain_text", "text": "action 1", "emoji": false}}, {"type": "button", "style": "danger", "action_id": "action_2", "text": {"type": "plain_text", "text": "action 2", "emoji": false}}]}]'_
