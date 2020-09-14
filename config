@@ -1,0 +1,15 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	precomposeunicode = true
+[remote "origin"]
+	url = git@github.com:escamez/slackviews.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[user]
+	name = escamez
+	email = aech22@gmail.com
+[branch "master"]
+        remote = origin
+        merge = refs/heads/master
