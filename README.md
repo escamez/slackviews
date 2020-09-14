@@ -383,6 +383,8 @@ planintext_escaped = PlainText.Builder().text('Simple text with emojis escaped i
     .emoji_(True).build().serialize(as_json=True)
 ```
 
+Json Serialized:
+
   _'{"type": "plain_text", "text": "Simple text without formatting", "emoji": false}'_
   
   _'{"type": "plain_text", "text": "Simple text with emojis escaped into colon emoji format :)", "emoji": true}'_
@@ -392,7 +394,11 @@ planintext_escaped = PlainText.Builder().text('Simple text with emojis escaped i
 section = Section.Builder().text__('Text with *markdown* _formatting_ and url processing http://anyurl.com').build().serialize(as_json=True)
 ```
 
+Json Serialized:
+
   _'{"type": "section", "text": {"type": "mrkdwn", "text": "Text with *markdown* _formatting_ and url processing http://anyurl.com", "verbatim": false}}'_
+
+Block Kit Builder image:
 
   ![Section with formatted Markdown](images/markdown.png)
 
@@ -402,7 +408,11 @@ section = Section.Builder().text__('Text with *markdown* _formatting_ and url pr
 section_verbatim = Section.Builder().text__('Text in verbatim mode. For example urls are not processed: http://anyurl.com', verbatim=True).build().serialize(as_json=True)
 ```
 
+Json Serialized:
+
   _'{"type": "section", "text": {"type": "mrkdwn", "text": "Text in verbatim mode. For example urls are not processed: http://anyurl.com", "verbatim": true}}'_
+
+Block Kit Builder image:
 
   ![Section with verbatim Markdown](images/markdown_verbatim.png)
   
@@ -417,7 +427,11 @@ section_with_fields.accessory_().Button().text('Click').action_id('action_name')
     .build().serialize(as_json=True)
 ```
 
+Json Serialized:
+
   _'{"type": "section", "accessory": {"type": "button", "confirm": {"style": "danger", "deny": {"type": "plain_text", "text": "no", "emoji": false}, "confirm": {"type": "plain_text", "text": "yes", "emoji": false}, "text": {"type": "mrkdwn", "text": "are you sure?", "verbatim": false}, "title": {"type": "plain_text", "text": "Confirmation", "emoji": false}}, "style": "danger", "action_id": "action_name", "text": {"type": "plain_text", "text": "Click", "emoji": false}}, "fields": [{"type": "mrkdwn", "text": "*Field_0*: value 0", "verbatim": false}, {"type": "mrkdwn", "text": "*Field_1*: value 1", "verbatim": false}, {"type": "mrkdwn", "text": "*Field_2*: value 2", "verbatim": false}, {"type": "mrkdwn", "text": "*Field_3*: value 3", "verbatim": false}], "block_id": "any block id"}'_
+
+Block Kit Builder image:
 
   ![Section with 4 fields an a Button with confirmation](images/section_with_4_fields_and_button.png)
   
@@ -429,7 +443,11 @@ section_with_button = Section.Builder().text__('Click button to open google').ac
     .build().serialize(as_json=True)
 ```
 
+Json Serialized:
+
   _'{"type": "section", "accessory": {"type": "button", "url": "http://www.google.com", "action_id": "any_action_name", "text": {"type": "plain_text", "text": "Google", "emoji": false}}, "text": {"type": "mrkdwn", "text": "Click button to open google", "verbatim": false}}'_
+
+Block Kit Builder image:
 
   ![Section with text an a button that opens an url](images/section_with_button_and_url.png)
   
@@ -441,7 +459,11 @@ Section.Builder().text__('Please, input necessary content').accessory_() \
     .build().serialize(as_json=True)
 ```
 
+Json Serialized:
+
   _'{"type": "section", "accessory": {"type": "plain_text_input", "multiline": true, "initial_value": "Initial content", "action_id": "any_action_id"}, "text": {"type": "mrkdwn", "text": "Please, input necessary content", "verbatim": false}}'_
+
+Block Kit Builder image:
 
 [Blocks builder does not allow me to show this in Blocks Kit Bilder]
 
@@ -450,8 +472,12 @@ Section.Builder().text__('Please, input necessary content').accessory_() \
 ```
 context_with_text = Context.Builder().element().Text().text('Any *formatted* text with smaller font').up().build().serialize(as_json=True)
 ```
-  
+
+Json Serialized:
+
   _'{"type": "context", "elements": [{"type": "mrkdwn", "text": "Any *formatted* text with smaller font", "verbatim": false}]}'_
+
+Block Kit Builder image:
 
   ![Simple Context element](images/simple_context.png)
  
@@ -469,7 +495,11 @@ _builder_overflow.Confirm_().text('Confirmation option').title('are you sure?').
 section_with_overflow = _builder_section.build().serialize(as_json=True)
 ```
 
+Json Serialized:
+
   _'{"type": "section", "accessory": {"type": "overflow", "confirm": {"style": "primary", "deny": {"type": "plain_text", "text": "no", "emoji": false}, "confirm": {"type": "plain_text", "text": "yes", "emoji": false}, "text": {"type": "mrkdwn", "text": "Confirmation option", "verbatim": false}, "title": {"type": "plain_text", "text": "are you sure?", "emoji": false}}, "options": [{"value": "0", "text": {"type": "plain_text", "text": "option 0", "emoji": false}}, {"value": "1", "text": {"type": "plain_text", "text": "option 1", "emoji": false}}, {"value": "2", "text": {"type": "plain_text", "text": "option 2", "emoji": false}}, {"value": "3", "text": {"type": "plain_text", "text": "option 3", "emoji": false}}], "action_id": "any_action_id"}, "text": {"type": "mrkdwn", "text": "Section with overflow and options", "verbatim": false}}'_
+
+Block Kit Builder image:
 
  ![Overflow with options](images/overflow_with_options.png)
 
@@ -488,7 +518,11 @@ blocks_array = BlocksArray.Builder() \
     .up().build().serialize(as_json=True)
 ```
 
+Json Serialized:
+
   _'[{"type": "header", "text": {"type": "plain_text", "text": "Header title", "emoji": false}}, {"type": "divider"}, {"type": "section", "fields": [{"type": "mrkdwn", "text": "field 1", "verbatim": false}, {"type": "mrkdwn", "text": "field 2", "verbatim": false}, {"type": "mrkdwn", "text": "field 3", "verbatim": false}, {"type": "mrkdwn", "text": "field 4", "verbatim": false}]}, {"type": "input", "element": {"type": "plain_text_input", "multiline": true, "action_id": "input_action_id"}, "label": {"type": "plain_text", "text": "Input text", "emoji": false}}, {"type": "divider"}, {"type": "actions", "elements": [{"type": "button", "style": "primary", "action_id": "action_1", "text": {"type": "plain_text", "text": "action 1", "emoji": false}}, {"type": "button", "style": "danger", "action_id": "action_2", "text": {"type": "plain_text", "text": "action 2", "emoji": false}}]}]'_
+
+Block Kit Builder image:
 
  ![Complex BlocksArray](images/blocksarray.png)
    
