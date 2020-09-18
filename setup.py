@@ -8,19 +8,34 @@ from setuptools import setup, find_packages
 
 __author__ = 'agutin.escamezchimeno@telefonica.com'
 
+
+def _read_file(filename, lines=True):
+    content = open(filename, 'r').read()
+    if lines:
+        return [line for line in content.split('\n') if line is not '']
+    return content
+
+
+def _version():
+    return _read_file('VERSION', lines=False)
+
+
 setup(
     name='slackviews',
-    version='1.0.0',
-    description='PProject with a library to generate Slack views from code, using builder pattern',
-    long_description=open('README.md').read(),
+    version=_version(),
+    description='Project with a library to generate Slack views from code, using builder pattern',
+    long_description=_read_file('README.md', lines=False),
+    long_description_content_type="text/markdown",
     author='Agustin Escamez',
     author_email='aech22@gmail.com',
-    url='https://github.com/escamez/slackviews.git',
-    platforms='Linux',
+    url='https://github.com/escamez/slackviews',
+    download_url=f'https://github.com/escamez/slackviews/archive/{_version()}].tar.gz',
     license='MIT',
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
-    install_requires=[line for line in open('requirements.txt', 'r').read().split('\n') if line is not ''],
-    classifiers=[line for line in open('CLASSIFIERS', 'r').read().split('\n') if line is not ''],
+    keywords=_read_file('KEYWORDS'),
+    install_requires=_read_file('requirements.txt'),
+    classifiers=_read_file('CLASSIFIERS'),
+    python_requires='>=3.6'
 )
