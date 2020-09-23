@@ -28,7 +28,7 @@ setup(
     version=_version(),
     description='Project with a library to generate Slack views from code, using builder pattern',
     long_description_content_type='text/markdown',
-    long_description=_read_file('README.md', lines=False),
+    long_description=_read_file('DESCRIPTION.md', lines=False),
     author='Agustin Escamez',
     author_email='aech22@gmail.com',
     url='https://github.com/escamez/slackviews',
