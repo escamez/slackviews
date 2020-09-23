@@ -12,30 +12,29 @@ __author__ = 'agutin.escamezchimeno@telefonica.com'
 def _read_file(filename, lines=True):
     content = open(filename, 'r').read()
     if lines:
-        return [line for line in content.split('\n') if line is not '']
+        return [line.rstrip(' ') for line in content.split('\n')]
     return content
 
 
 def _version():
-    return _read_file('VERSION', lines=False)
-
+    return _read_file('VERSION', lines=True)[0].rstrip(' ')
 
 setup(
     name='slackviews',
     version=_version(),
     description='Project with a library to generate Slack views from code, using builder pattern',
+    long_description_content_type='text/markdown',
     long_description=_read_file('README.md', lines=False),
-    long_description_content_type="text/markdown",
     author='Agustin Escamez',
     author_email='aech22@gmail.com',
     url='https://github.com/escamez/slackviews',
-    download_url=f'https://github.com/escamez/slackviews/archive/{_version()}].tar.gz',
+    download_url=f'https://github.com/escamez/slackviews/archive/v{_version()}].tar.gz',
     license='MIT',
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
     keywords=_read_file('KEYWORDS'),
-    install_requires=_read_file('requirements.txt'),
+    install_requires=[],
     classifiers=_read_file('CLASSIFIERS'),
     python_requires='>=3.6'
 )
