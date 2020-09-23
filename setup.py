@@ -32,7 +32,7 @@ setup(
     author='Agustin Escamez',
     author_email='aech22@gmail.com',
     url='https://github.com/escamez/slackviews',
-    download_url=f'https://github.com/escamez/slackviews/archive/v{_version()}].tar.gz',
+    download_url=f'https://github.com/escamez/slackviews/archive/v{_version()}.tar.gz',
     license='MIT',
     packages=find_packages(),
     include_package_data=True,
