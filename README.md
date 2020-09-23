@@ -400,7 +400,7 @@ Json Serialized:
 
 Block Kit Builder image:
 
-  ![Section with formatted Markdown](images/markdown.png)
+  ![Section with formatted Markdown](https://raw.githubusercontent.com/escamez/slackviews/master/images/markdown.png)
 
 **Section with markdown and verbatim mode**
 
@@ -414,7 +414,7 @@ Json Serialized:
 
 Block Kit Builder image:
 
-  ![Section with verbatim Markdown](images/markdown_verbatim.png)
+  ![Section with verbatim Markdown](https://raw.githubusercontent.com/escamez/slackviews/master/images/markdown_verbatim.png)
   
 **Section with 4 fields an a Button with confirmation**
 
@@ -433,7 +433,7 @@ Json Serialized:
 
 Block Kit Builder image:
 
-  ![Section with 4 fields an a Button with confirmation](images/section_with_4_fields_and_button.png)
+  ![Section with 4 fields an a Button with confirmation](https://raw.githubusercontent.com/escamez/slackviews/master/images/section_with_4_fields_and_button.png)
   
 **Section with text an a button that opens an url**
 
@@ -449,7 +449,7 @@ Json Serialized:
 
 Block Kit Builder image:
 
-  ![Section with text an a button that opens an url](images/section_with_button_and_url.png)
+  ![Section with text an a button that opens an url](https://raw.githubusercontent.com/escamez/slackviews/master/images/section_with_button_and_url.png)
   
 **Section with a multiline PlainInputText**
 
@@ -479,7 +479,7 @@ Json Serialized:
 
 Block Kit Builder image:
 
-  ![Simple Context element](images/simple_context.png)
+  ![Simple Context element](https://raw.githubusercontent.com/escamez/slackviews/master/images/simple_context.png)
  
 **Overflow with options. As can be seen, since the reference of the builder is returned it's much easier to build
 any content**
@@ -501,7 +501,7 @@ Json Serialized:
 
 Block Kit Builder image:
 
- ![Overflow with options](images/overflow_with_options.png)
+ ![Overflow with options](https://raw.githubusercontent.com/escamez/slackviews/master/images/overflow_with_options.png)
 
 **BlocksArray with a Header, divider, Section with fields, Input with plaintextinput multiline and actions 
 with a couple of buttons, one green (primary style) an another one red (danger style)**
@@ -524,5 +524,5 @@ Json Serialized:
 
 Block Kit Builder image:
 
- ![Complex BlocksArray](images/blocksarray.png)
+ ![Complex BlocksArray](https://raw.githubusercontent.com/escamez/slackviews/master/images/blocksarray.png)
    
