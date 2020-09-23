@@ -1,7 +1,4 @@
-Development Status :: 5 - PRODUCTION/STABLE
 Programming Language :: Python :: 3
-Environment :: Linux
-License :: MIT License
-Operating System :: POSIX :: Linux
-Programming Language :: Python
+Operating System :: OS Independent
+License :: OSI Approved :: MIT License
 Topic :: Slack
