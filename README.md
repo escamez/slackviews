@@ -21,6 +21,8 @@ write this one.
 The lib, includes "almost" all Block types, I just left out those that I was not gonna use for sure, but once you see 
 the source code you'll realize it can be extended to include those pretty easily.
 
+There is another module with a basic model to handle  Slack commands and interactions, named *payloads*
+ 
 ## Syntaxis
 
 There is a convention to distinguish between *required*, *optional* and *mutually exclusive* attributes:
