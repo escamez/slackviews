@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "e0cc9ba3723dba263d0a05960e34f07d79a242ccd3bb8ec35a2b6bfa79191c54"
+            "sha256": "e83543500d5fcd6037240b7b2e623a9718d5413c6a96f52b1551a54e65262eb6"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -15,7 +15,24 @@
             }
         ]
     },
-    "default": {},
+    "default": {
+        "slackviews": {
+            "hashes": [
+                "sha256:583f0674b700cf38469e44aabf4f09f6416099b750516ca3acf80425b99dbc7a",
+                "sha256:c4ab266922e511275647f08a9f5db0b4c309f591fa3968edb81ef59eb02ee462"
+            ],
+            "index": "pypi",
+            "version": "==1.1.0"
+        },
+        "werkzeug": {
+            "hashes": [
+                "sha256:2de2a5db0baeae7b2d2664949077c2ac63fbd16d98da0ff71837f7d1dea3fd43",
+                "sha256:6c80b1e5ad3665290ea39320b91e1be1e0d5f60652b964a3070216de83d2e47c"
+            ],
+            "index": "pypi",
+            "version": "==1.0.1"
+        }
+    },
     "develop": {
         "mock": {
             "hashes": [
